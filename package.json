@@ -77,9 +77,6 @@
       "npm run format",
       "npm run lint"
     ],
-    "src/**/*.spec.ts": [
-      "npm run test:cov"
-    ],
     "docs/*": [
       "npx prettier -w"
     ]

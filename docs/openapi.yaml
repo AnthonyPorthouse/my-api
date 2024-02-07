@@ -3,6 +3,9 @@ openapi: 3.1.0
 info:
   title: My API
   version: 0.0.1
+  license:
+    name: MIT
+    identifier: MIT
 
 servers:
   - url: http://localhost:3000
@@ -17,13 +20,37 @@ paths:
       security: []
       responses:
         '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getIndexResponse'
+          $ref: '#/components/responses/getIndexOk'
+
+  '/todos':
+    description: Todo related items
+    get:
+      operationId: getTodos
+      summary: List Todos
+      security: []
+      responses:
+        '200':
+          $ref: '#/components/responses/getTodosOk'
 
 components:
+  responses:
+    getIndexOk:
+      description: Successful Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getIndexResponse'
+
+    getTodosOk:
+      description: Successful Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getTodosResponse'
+
   schemas:
     getIndexResponse:
       $ref: './index/response.json'
+
+    getTodosResponse:
+      $ref: './todos/listResponse.json'

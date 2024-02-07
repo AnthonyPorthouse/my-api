@@ -3,15 +3,21 @@ name: Test
 on: pull_request
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4
-              with:
-                node-version: lts/iron
-                cache: npm
-            - run: npm ci
-            - uses: ArtiomTr/jest-coverage-report-action@v2
-              with:
-                test-script: npm test
+  test:
+    runs-on: ubuntu-latest
+
+    permissions:
+      checks: write
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/iron
+          cache: npm
+      - run: npm ci
+      - uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          test-script: npm test

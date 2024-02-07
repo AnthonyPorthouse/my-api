@@ -72,12 +72,16 @@
     "testEnvironment": "node"
   },
   "lint-staged": {
-    "src/*.ts": [
+    ".github/**/*.{yaml,yml}": ["npx prettier -w"],
+    "src/**/*.ts": [
       "npm run format",
       "npm run lint"
     ],
+    "src/**/*.spec.ts": [
+      "npm run test:cov"
+    ],
     "docs/*": [
-      "npx prettier -w docs"
+      "npx prettier -w"
     ]
   }
 }

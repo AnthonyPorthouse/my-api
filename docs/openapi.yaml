@@ -1,0 +1,29 @@
+openapi: 3.1.0
+
+info:
+  title: My API
+  version: 0.0.1
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  '/':
+    description: |
+      Index of the API
+    get:
+      operationId: getIndex
+      summary: Return API status
+      security: []
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getIndexResponse'
+
+components:
+  schemas:
+    getIndexResponse:
+      $ref: './index/response.json'
